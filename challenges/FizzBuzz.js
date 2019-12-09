@@ -1,31 +1,40 @@
 let chooseChar = '#';
 let space = ' ';
-let gridLenth = 3;
 
-function printGrid(chooseChar, gridLenth, sperator) {
+const enteredValue = prompt('Please enter the grid size', '8');
+const gridSize = parseInt(enteredValue);
+
+function printGrid(chooseChar, gridSize, sperator) {
+
+    if(isNaN(gridSize)){
+        alert('Invalid entered grid size. Please try another one');
+        console.log('Invalid entered grid size. Please try another one');
+        return;
+    }
+
     let grid = '';
-    let counter = 0;
-    const extendedGridLength = gridLenth * gridLenth + (gridLenth - 1);
+    let newLineCounter = 0;
+    const extendedGridSize = gridSize * gridSize + (gridSize - 1);
     
-    for(i = 0; i < extendedGridLength; i++) {
+    for(i = 0; i < extendedGridSize; i++) {
 
         if(!(i % 2))
             grid = grid + sperator; 
         else if (i % 2)
             grid = grid + chooseChar;
 
-        ++counter; 
+        ++newLineCounter; 
 
-        if(counter === gridLenth) {
+        if(newLineCounter === gridSize) {
             grid = grid + '\n';
             i++;                      
-            counter = 0;
+            newLineCounter = 0;
 
-            //rearange chars if the grid length is not a pair number
-            if(gridLenth % 2) {
-                const aux = sperator;
+            //rearange chars if the grid Size is not a pair number
+            if(gridSize % 2) {
+                const auxValueHandler = sperator;
                 sperator = chooseChar;
-                chooseChar = aux;
+                chooseChar = auxValueHandler;
             }
         }
     }
@@ -38,7 +47,7 @@ function printGrid(chooseChar, gridLenth, sperator) {
     value2 = auxValueHandler;    
 }*/
 
-printGrid(chooseChar, gridLenth, space);
+printGrid(chooseChar, gridSize, space);
 
 
 function printNumbersFizzBuzz() {
