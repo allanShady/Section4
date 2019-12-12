@@ -12,6 +12,8 @@ function printGrid(chooseChar, gridSize, sperator) {
         return;
     }
 
+    gridSize = Math.abs(gridSize);
+
     let grid = '';
     let newLineCounter = 0;
     const extendedGridSize = gridSize * gridSize + (gridSize - 1);
@@ -47,8 +49,19 @@ function printGrid(chooseChar, gridSize, sperator) {
     value2 = auxValueHandler;    
 }*/
 
-printGrid(chooseChar, gridSize, space);
+const square = (value) => value * value;
+const h = () => console.log('First'); 
+const multiplier = factor => { return number => number  * factor; }
 
+const twice = multiplier(2);
+console.log(`result: ${twice(10)}`);
+
+h();
+console.log('secund')
+
+console.log(`The square of 4 is: ${square(4)}`);
+
+printGrid(chooseChar, gridSize, space);
 
 function printNumbersFizzBuzz() {
     for (i = 1; i <= 100; i++) { 
