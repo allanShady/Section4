@@ -37,7 +37,7 @@ function buildMathOp(operands, operator, result) {
 const reverseArray = array => array.reverse();
 const reverseArrayInPlace = array => { console.log(`resevrsed Array: ${array.reverse()}`); };
 
-const arrayToList = (numbers) => {
+const arrayToList = numbers => {
     let listItem = null;
    
     numbers.reverse();
@@ -51,7 +51,7 @@ const arrayToList = (numbers) => {
     return listItem;
 }
 
-const listToArray = (list) => {
+const listToArray = list => {
     let array = [];
 
     if (list) 
@@ -62,15 +62,34 @@ const listToArray = (list) => {
     return array;
 }
 
+const prepand = (list, element) => {
+    
+    if(isNullOrUndefined(list))
+        return element;
+
+    getLastElement(list).rest = element;
+    return list;
+}
+
+const getLastElement = list => {
+    
+    if(!list.rest)
+        return list;
+
+    return getLastElement(list.rest);
+}
+
 
 const numbers = buildArrayOfNumbers(1, 10, 2);
 const sumOfNumber = sum(numbers);
 const listFromArray = arrayToList(numbers);
 const arrayFromList = listToArray(listFromArray);
 
-console.log(buildMathOp(numbers, '+', sumOfNumber));
+console.log(`Added 10`);
+console.log(prepand(null, {value: 10, rest: null}));
+//console.log(buildMathOp(numbers, '+', sumOfNumber));
 //console.log(`List:`, arrayToList(numbers));
-console.log(listFromArray);
-console.log(arrayFromList);
-console.log(`Numbers ${numbers} Reversed numbers: ${reverseArray(numbers)}`);
-reverseArrayInPlace(numbers);
+//console.log(listFromArray);
+//console.log(arrayFromList);
+//console.log(`Numbers ${numbers} Reversed numbers: ${reverseArray(numbers)}`);
+//reverseArrayInPlace(numbers);
