@@ -34,7 +34,43 @@ function buildMathOp(operands, operator, result) {
     return `${operands.toString().split(',').join(` ${operator.trim()} `)} = ${result}`;
 }
 
+const reverseArray = array => array.reverse();
+const reverseArrayInPlace = array => { console.log(`resevrsed Array: ${array.reverse()}`); };
+
+const arrayToList = (numbers) => {
+    let listItem = null;
+   
+    numbers.reverse();
+
+    for (let i = 0; i < numbers.length; i++) {
+        listItem = {
+            value: numbers[i],
+            rest: listItem
+        };     
+    }
+    return listItem;
+}
+
+const listToArray = (list) => {
+    let array = [];
+
+    if (list) 
+        do
+            array.push(list.value);
+        while(list = list.rest);
+
+    return array;
+}
+
+
 const numbers = buildArrayOfNumbers(1, 10, 2);
 const sumOfNumber = sum(numbers);
+const listFromArray = arrayToList(numbers);
+const arrayFromList = listToArray(listFromArray);
 
 console.log(buildMathOp(numbers, '+', sumOfNumber));
+//console.log(`List:`, arrayToList(numbers));
+console.log(listFromArray);
+console.log(arrayFromList);
+console.log(`Numbers ${numbers} Reversed numbers: ${reverseArray(numbers)}`);
+reverseArrayInPlace(numbers);
