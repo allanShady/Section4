@@ -79,6 +79,19 @@ const getLastElement = list => {
     return getLastElement(list.rest);
 }
 
+function nth(list, position) {
+    
+    position = Math.abs(position);
+
+    if(position === 0 && !isNullOrUndefined(list))
+        return {value: list.value, rest: null}
+        
+    //When the position is not given or not found element;
+    if(isNullOrUndefined(list))
+        return undefined;
+
+    return nth(list.rest, position - 1);
+}
 
 const numbers = buildArrayOfNumbers(1, 10, 2);
 const sumOfNumber = sum(numbers);
@@ -86,7 +99,9 @@ const listFromArray = arrayToList(numbers);
 const arrayFromList = listToArray(listFromArray);
 
 console.log(`Added 10`);
-console.log(prepand(null, {value: 10, rest: null}));
+//console.log(prepand(null, {value: 10, rest: null}));
+console.log(listFromArray);
+console.log(`The element into position ${2} is`, nth(listFromArray, 5));
 //console.log(buildMathOp(numbers, '+', sumOfNumber));
 //console.log(`List:`, arrayToList(numbers));
 //console.log(listFromArray);
