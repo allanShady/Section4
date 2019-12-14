@@ -97,9 +97,19 @@ function deepEqual(value1, value2) {
     let isEqual = false;
 
     if(typeof value1 === 'object' && typeof value2 === 'object') {
-        for (const key in value1)
-            if (value1.hasOwnProperty(key))
-                if(!(value1[key] === value2[key]))
+        
+        let loopObj;
+        let compObj
+
+        if(Object.keys(value1).length > Object.keys(value2).length) {
+            loopObj = value1;   compObj = value2;
+        }
+        else {
+            loopObj = value2;   compObj = value1; 
+        }
+        for (const key in loopObj)
+            if (loopObj.hasOwnProperty(key))
+                if(!(loopObj[key] === compObj[key]))
                     return isEqual;
         
         isEqual = true;
