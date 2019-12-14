@@ -93,6 +93,31 @@ function nth(list, position) {
     return nth(list.rest, position - 1);
 }
 
+function deepEqual(value1, value2) {
+    let isEqual = false;
+
+    if(typeof value1 === 'object' && typeof value2 === 'object') {
+        console.log('deep comp requireds');
+        console.log(Object.keys(value1));
+        console.log(Object.keys(value2));
+
+        console.log(`looping object 2`);
+        for (const key in value2) {
+            if (value2.hasOwnProperty(key)) {
+                const element = value2[key];
+                console.log(key);
+                console.log('Its elements');
+                console.log(element);
+            }
+        }
+    }
+    else
+        isEqual = (value1 === value2)
+
+    return isEqual;
+}
+
+
 const numbers = buildArrayOfNumbers(1, 10, 2);
 const sumOfNumber = sum(numbers);
 const listFromArray = arrayToList(numbers);
