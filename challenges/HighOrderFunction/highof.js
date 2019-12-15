@@ -8,6 +8,17 @@ function unless(test, then) {
     if (!test) then(); 
 }
 
+function reduce(array, combination, start) {
+    let current = start;
+
+    for (const element of array) {
+        current = combination(current, element);
+    }
+    return current;
+}
+
+console.log(reduce([1, 2, 3, 4], (x, y) => x + y, 0));
+
 console.log(`Repeat console.log`)
 repeat(5, console.log);
 console.log('Call: repeat(3, i => { console.log(isNaN(i), i) })');
