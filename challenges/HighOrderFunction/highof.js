@@ -17,6 +17,19 @@ function reduce(array, combination, start) {
     return current;
 }
 
+//Compositions
+function average(array) {
+    return reduce((a, b) => a + b) / array.length;
+}
+
+//Strings and character codes
+const roseDragon = "🌹🐉";
+for (const char of roseDragon) {
+    console.log(char, `char code`, roseDragon.codePointAt(0) );
+}
+
+
+
 console.log(reduce([1, 2, 3, 4], (x, y) => x + y, 0));
 
 console.log(`Repeat console.log`)
