@@ -28,7 +28,23 @@ for (const char of roseDragon) {
     console.log(char, `char code`, roseDragon.codePointAt(0) );
 }
 
+function countBy(items, groupName) {
+    let counts = [];
 
+    for (const item of items) {
+        const name = groupName(item);
+        const  known = counts.findIndex(c => c.name == name);
+
+        if(known == -1)
+            counts.push({name, count: 1 });
+        else
+            counts[known].count++;
+    }
+
+    return  counts;
+}
+
+console.log(countBy([1, 2, 3, 4, 5], n => n > 2));
 
 console.log(reduce([1, 2, 3, 4], (x, y) => x + y, 0));
 
