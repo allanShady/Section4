@@ -14,9 +14,21 @@ function hideHint(selector) {
     document.querySelector(selector).style.visibility = 'hidden';
 }
 
-const loopfunc = () => {
+const loopfunc = (value, test, update, body) => {
+    
+    let currentValue;
+
+    for (i = 0; i < value.length; i++) {
+        if(!test(value[i])) {
+            currentValue = value[i];
+            break;
+        }
+    }
+    
+    body(currentValue);
+    update(currentValue);
+
     hideHint('#ownloophint');
-    console.log('Loop clicked');
 }
 
 flatteningBtn.addEventListener('click', flatten);
