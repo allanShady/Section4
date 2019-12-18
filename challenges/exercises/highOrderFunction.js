@@ -32,8 +32,20 @@ const loopfunc = (value, test, update, body) => {
     hideHint('#ownloophint');
 }
 
+function everyWithLoop(array, func) {
+
+    let result = true;
+    
+    array.forEach(element => {
+        if(!func(element))
+            result = false; 
+    });
+
+    return result;
+}
+
 function everything() {
-    console.log('Inside everything loop ...');
+    console.log(everyWithLoop([0, 1, 2, 3], element => element >= 2));
     hideHint('#everythinghint');
 }
 
