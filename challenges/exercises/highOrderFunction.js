@@ -1,5 +1,6 @@
 const flatteningBtn = document.querySelector('#flattening');
 const ownloopBtn = document.querySelector('#ownloop');
+const everythingBtn = document.querySelector('#everything'); 
 
 const flattenArray = array => {
     return array.reduce((b, c) => b.concat(c));
@@ -31,5 +32,11 @@ const loopfunc = (value, test, update, body) => {
     hideHint('#ownloophint');
 }
 
+function everything() {
+    console.log('Inside everything loop ...');
+    hideHint('#everythinghint');
+}
+
 flatteningBtn.addEventListener('click', flatten);
 ownloopBtn.addEventListener('click', loopfunc);
+everythingBtn.addEventListener('click', everything);
